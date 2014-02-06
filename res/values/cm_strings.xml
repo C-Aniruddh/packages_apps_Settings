@@ -969,7 +969,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
 
     <!-- Development shortcut -->
-    <string name="development_shortcut_title">Development shortcut</string>
+    <string name="development_shortcut_title">Development shortcuts</string>
     <string name="development_shortcut_summary">Enable \'wipe data\' and \'force close\' options in notification area and recent apps list</string>
 
     <!-- USB Mass Storage -->
