@@ -277,7 +277,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
         }
 
         // Add the additional Omni settings
- +        mLockRingBattery = (CheckBoxPreference) root
+        mLockRingBattery = (CheckBoxPreference) root
                 .findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
         if (mLockRingBattery != null) {
             mLockRingBattery.setChecked(Settings.System.getInt(getContentResolver(),
