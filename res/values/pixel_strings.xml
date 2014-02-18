@@ -393,4 +393,7 @@
     <string name="lockscreen_widget_frame_title">Disable widget frames</string>
     <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
 
+    <!-- Lockscreen battery ring -->
+    <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
+
 </resources>
