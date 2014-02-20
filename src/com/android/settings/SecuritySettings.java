@@ -109,6 +109,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
     // Omni Additions
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
+    // MULTIUSER
+    public static final String ALLOW_MULTIUSER = "allow_multiuser";
+
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
 
@@ -126,6 +129,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private KeyStore mKeyStore;
     private Preference mResetCredentials;
 
+    private CheckBoxPreference mAllowMultiuserPreference;
     private CheckBoxPreference mToggleAppInstallation;
     private DialogInterface mWarnInstallApps;
     private CheckBoxPreference mToggleVerifyApps;
@@ -282,6 +286,14 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mLockRingBattery != null) {
             mLockRingBattery.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1);
+        }
+
+        mAllowMultiuserPreference = (CheckBoxPreference) root.findPreference(ALLOW_MULTIUSER);
+        mAllowMultiuserPreference.setEnabled(UserHandle.myUserId() == UserHandle.USER_OWNER);
+        mAllowMultiuserPreference.setChecked(Settings.System.getIntForUser(getContentResolver(),
+            Settings.System.ALLOW_MULTIUSER, 0, UserHandle.USER_OWNER) == 1);
+        if (Utils.isTablet(getActivity())) {
+            root.removePreference(mAllowMultiuserPreference);
         }
 
         // biometric weak liveliness
@@ -759,6 +771,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
         } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
+        } else if (mAllowMultiuserPreference == preference) {
+            handleMultiUserClick();
         } else if (preference == mToggleAppInstallation) {
             if (mToggleAppInstallation.isChecked()) {
                 mToggleAppInstallation.setChecked(false);
@@ -843,6 +857,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
     @Override
     protected int getHelpResource() {
         return R.string.help_url_security;
+    }
+
+    private void handleMultiUserClick() {
+        Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.ALLOW_MULTIUSER, (mAllowMultiuserPreference.isChecked() ? 1 : 0), UserHandle.USER_OWNER);
     }
 
     public void startBiometricWeakImprove(){
