@@ -452,4 +452,8 @@
     <string name="identicons_style_spirograph">Spirograph</string>
     <string name="identicons_style_dotmatrix">Dot matrix</string>
 
+    <!-- ADB Paranoid settings -->
+    <string name="adb_paranoid">ADB paranoia mode</string>
+    <string name="adb_paranoid_summary">Immediately reboot if an unknown computer is connected while device is locked</string>
+
 </resources>
