@@ -274,15 +274,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             checkPowerInstantLockDependency();
         }
 
-<<<<<<< HEAD
-        // Add the additional Omni settings
- +        mLockRingBattery = (CheckBoxPreference) root
-                .findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
-        if (mLockRingBattery != null) {
-            mLockRingBattery.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1);
-        }
-
         mAllowMultiuserPreference = (CheckBoxPreference) root.findPreference(ALLOW_MULTIUSER);
         mAllowMultiuserPreference.setEnabled(UserHandle.myUserId() == UserHandle.USER_OWNER);
         mAllowMultiuserPreference.setChecked(Settings.System.getIntForUser(getContentResolver(),
@@ -291,8 +282,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             root.removePreference(mAllowMultiuserPreference);
         }
 
-=======
->>>>>>> parent of 1ec1150... Settings: Add lockscreen ring battery setting (2/2)
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
