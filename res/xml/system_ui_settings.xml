@@ -140,10 +140,4 @@
         android:fragment="com.android.settings.pixel.SystemappRemover"
         android:title="@string/system_app_remover" />
 
-    <PreferenceScreen
-        android:id="@+id/identicons"
-        android:fragment="com.android.settings.chameleonos.labs.identicons.IdenticonsSettings"
-        android:icon="@drawable/ic_settings_identicons"
-        android:title="@string/identicons_title" />
-
 </PreferenceScreen>
